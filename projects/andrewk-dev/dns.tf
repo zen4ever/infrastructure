@@ -1,6 +1,6 @@
 
 resource "google_project_service" "dns" {
-  project = local.project 
+  project = local.project
   service = "dns.googleapis.com"
 }
 
