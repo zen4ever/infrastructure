@@ -46,7 +46,7 @@ resource "google_compute_instance" "dev_instance" {
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-10"
-
+      size  = 30
     }
   }
 
@@ -62,7 +62,7 @@ resource "google_compute_instance" "dev_instance" {
     role = "development"
   }
 
-  metadata_startup_script = "apt-get update && apt-get install -y mosh"
+  metadata_startup_script = "apt-get update && apt-get install -y mosh git tmux"
 
   metadata = {
     ssh-keys = join("\n", [for each in local.ssh-keys : "${each["username"]}:${each["key"]}"])
